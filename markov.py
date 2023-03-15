@@ -7,7 +7,7 @@ from random import choice
 def open_and_read_file(filenames):
     """Take list of files. Open them, read them, and return one long string."""
 
-    body = ''
+    body = ""
     for filename in filenames:
         text_file = open(filename)
         body = body + text_file.read()
@@ -52,7 +52,7 @@ def make_text(chains):
         words.append(word)
         key = (key[1], word)
 
-    return ' '.join(words)
+    return " ".join(words)
 
 
 # Get the filenames from the user through a command line prompt, ex:
@@ -60,7 +60,9 @@ def make_text(chains):
 filenames = sys.argv[1:]
 
 if not filenames:
-    print("Please provide a filename on the command line! Ex. python3 markov.py green-eggs.txt")
+    print(
+        "Please provide a filename on the command line! Ex. python3 markov.py green-eggs.txt"
+    )
     exit(1)
 
 # Open the files and turn them into one long string
@@ -68,3 +70,6 @@ text = open_and_read_file(filenames)
 
 # Get a Markov chain
 chains = make_chains(text)
+
+# Print the chain
+print(make_text(chains))
