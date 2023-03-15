@@ -2,6 +2,11 @@
 
 import discord
 import os
+from markov import make_chains, make_text
+
+green_eggs = open("green-eggs.txt").read()
+
+markov_message = make_text(make_chains((green_eggs)))
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -19,10 +24,8 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith("How are you?"):
-        await message.channel.send(
-            "I was born 10 minutes ago and so far, life is...meh"
-        )
+    if message.content.startswith("Give me a markov!"):
+        await message.channel.send(markov_message)
 
 
 client.run(os.environ["DISCORD_TOKEN"])

@@ -65,11 +65,12 @@ if not filenames:
     )
     exit(1)
 
+
 # Open the files and turn them into one long string
 text = open_and_read_file(filenames)
 
 # Get a Markov chain
 chains = make_chains(text)
 
-# Print the chain
-print(make_text(chains))
+# # Print the chain
+# make_text(chains)
